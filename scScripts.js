@@ -3,6 +3,19 @@
     
 window.onload = function() {
     //load canvas
+    function thingthatplayssound(path,vol) {
+        var snd = new Audio(path);
+        snd.volume = vol;
+        snd.play();
+    }
+    function cloaksound(state) {
+        if (state == 0) {
+            thingthatplayssound("audio/teleport/cloak.ogg", 0.3);
+        } else {
+            thingthatplayssound("audio/teleport/uncloak.ogg", 0.3);
+        }
+    }
+    thingthatplayssound("audio/music/bp_MUS_ShrikeBATTLE.ogg",1);
     var gameon = true;
     var star = {
     _x: null,
@@ -184,10 +197,10 @@ window.onload = function() {
     var fuel1 = 20;
     var fuel2 = 20;
 function hyperJump(pnum, exec) { //HYPERJUMP!
-    if (pnum == 1) {if (fuel1 > 0) {new Audio('audio/teleport/teleport.ogg').play(); p1x = Math.floor((Math.random() * 6)*200); p1y = Math.floor((Math.random() * 6)*100); fuel1 = fuel1-1; console.log(fuel1); $("#f1").text(fuel1);} else {if (exec == 0){$("#f1").text("0");} else {
-window.location.href = 'http://www.bing.com' + '#' + fuel1 + '#' + p1AMMO + '#' + fuel2 + '#' + p2AMMO; console.log("end");}}}
-    if (pnum == 2) {if (fuel2 > 0) {new Audio('audio/teleport/teleport.ogg').play(); p2x = Math.floor((Math.random() * 6)*200); p2y = Math.floor((Math.random() * 6)*100); fuel2 = fuel2 -1; console.log(fuel2); $("#f2").text(fuel2);} else {if (exec == 0){$("#f2").text("0");} else {
-window.location.href = 'http://www.bing.com' + '#' + fuel1 + '#' + p1AMMO + '#' + fuel2 + '#' + p2AMMO; console.log("end");}}}
+    if (pnum == 1) {if (fuel1 > 0) {thingthatplayssound("audio/teleport/teleport.ogg",0.3); p1x = Math.floor((Math.random() * 6)*200); p1y = Math.floor((Math.random() * 6)*100); fuel1 = fuel1-1; console.log(fuel1); $("#f1").text(fuel1);} else {if (exec == 0){$("#f1").text("0");} else {
+window.location.href = 'end.html' + '#' + fuel1 + '#' + p1AMMO + '#' + fuel2 + '#' + p2AMMO; console.log("end");}}}
+    if (pnum == 2) {if (fuel2 > 0) {thingthatplayssound("audio/teleport/teleport.ogg",0.3); p2x = Math.floor((Math.random() * 6)*200); p2y = Math.floor((Math.random() * 6)*100); fuel2 = fuel2 -1; console.log(fuel2); $("#f2").text(fuel2);} else {if (exec == 0){$("#f2").text("0");} else {
+window.location.href = 'end.html' + '#' + fuel1 + '#' + p1AMMO + '#' + fuel2 + '#' + p2AMMO; console.log("end");}}}
 }
  //____________________________________________________________________________________________________________________________
 //Listens to app for keyboard actions
@@ -247,7 +260,7 @@ function weapcreate(xsp,ysp,plr) {
             weaponUpdate();
             weaponstat = true;
             p1AMMO = p1AMMO - 1;
-            new Audio('audio/weapons/bp_missile_small.ogg').play();
+            thingthatplayssound('audio/weapons/bp_missile_small.ogg',1);
         }
     } else {
         if(p2canFire == true) {
@@ -256,7 +269,7 @@ function weapcreate(xsp,ysp,plr) {
             weaponUpdate();
             weaponstat = true;
             p2AMMO = p2AMMO - 1;
-            new Audio('audio/weapons/bp_missile_small.ogg').play();
+            thingthatplayssound('audio/weapons/bp_missile_small.ogg',1);
     }
     }
     $("#1AMMO").text(p1AMMO); 
@@ -368,16 +381,16 @@ function weapcreate(xsp,ysp,plr) {
  //________________________________________________________________________________________________________________
         if (81 in keysDown && ship2cloak <= 0) {
         
-            if (65 in keysDown) {new Audio('audio/teleport/cloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3CLOAK.png"; ship2cloak = 600;} //left
-            if (68 in keysDown) {new Audio('audio/teleport/cloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3CLOAKL.png"; ship2cloak = 600;} //right
-            if (87 in keysDown) {new Audio('audio/teleport/cloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3CLOAKU.png"; ship2cloak = 600;} //up
-            if (83 in keysDown) {new Audio('audio/teleport/cloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3CLOAKD.png"; ship2cloak = 600;} //down
+            if (65 in keysDown) {cloaksound(0); ship2.src="images/Starship/3/STARSHIP3CLOAK.png"; ship2cloak = 600;} //left
+            if (68 in keysDown) {cloaksound(0); ship2.src="images/Starship/3/STARSHIP3CLOAKL.png"; ship2cloak = 600;} //right
+            if (87 in keysDown) {cloaksound(0); ship2.src="images/Starship/3/STARSHIP3CLOAKU.png"; ship2cloak = 600;} //up
+            if (83 in keysDown) {cloaksound(0); ship2.src="images/Starship/3/STARSHIP3CLOAKD.png"; ship2cloak = 600;} //down
         
         } else {
-            if (68 in keysDown) {if (ship2cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKL.png";}}} //right
-            if (65 in keysDown) {if (ship2cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3L.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAK.png";}}} //left
-            if (87 in keysDown) {if (ship2cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3U.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKU.png";}}} //up
-            if (83 in keysDown) {if (ship2cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3D.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKD.png";}}} //down
+            if (68 in keysDown) {if (ship2cloak == 1){cloaksound(1); ship2.src="images/Starship/3/STARSHIP3.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKL.png";}}} //right
+            if (65 in keysDown) {if (ship2cloak == 1){cloaksound(1); ship2.src="images/Starship/3/STARSHIP3L.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAK.png";}}} //left
+            if (87 in keysDown) {if (ship2cloak == 1){cloaksound(1); ship2.src="images/Starship/3/STARSHIP3U.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKU.png";}}} //up
+            if (83 in keysDown) {if (ship2cloak == 1){cloaksound(1); ship2.src="images/Starship/3/STARSHIP3D.png";} else { if (ship2cloak > 1) {ship2.src="images/Starship/3/STARSHIP3CLOAKD.png";}}} //down
          }
 
        if (33 in keysDown && ship1cloak <= 0) {
@@ -396,15 +409,15 @@ function weapcreate(xsp,ysp,plr) {
 
 
       /*  if (33 in keysDown) {
-            if (37 in keysDown) {if (ship1cloak == 0){new Audio('audio/teleport/cloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0CLOAK.png"; ship1cloak = 1;} //left
-            if (39 in keysDown) {if (ship1cloak == 0){new Audio('audio/teleport/cloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0CLOAKR.png"; ship1cloak = 1;} //right
-            if (40 in keysDown) {if (ship1cloak == 0){new Audio('audio/teleport/cloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0CLOAKD.png"; ship1cloak = 1;} //down
-            if (38 in keysDown) {if (ship1cloak == 0){new Audio('audio/teleport/cloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0CLOAKU.png"; ship1cloak = 1;} //up
+            if (37 in keysDown) {if (ship1cloak == 0){cloaksound(0);} ship1.src="images/Starship/0/STARSHIP0CLOAK.png"; ship1cloak = 1;} //left
+            if (39 in keysDown) {if (ship1cloak == 0){cloaksound(0);} ship1.src="images/Starship/0/STARSHIP0CLOAKR.png"; ship1cloak = 1;} //right
+            if (40 in keysDown) {if (ship1cloak == 0){cloaksound(0);} ship1.src="images/Starship/0/STARSHIP0CLOAKD.png"; ship1cloak = 1;} //down
+            if (38 in keysDown) {if (ship1cloak == 0){cloaksound(0);} ship1.src="images/Starship/0/STARSHIP0CLOAKU.png"; ship1cloak = 1;} //up
         } else {
-            if (39 in keysDown) {if (ship1cloak == 1){new Audio('audio/teleport/uncloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0R.png"; ship1cloak = 0;} //right
-            if (37 in keysDown) {if (ship1cloak == 1){new Audio('audio/teleport/uncloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0.png"; ship1cloak = 0;} //left
-            if (40 in keysDown) {if (ship1cloak == 1){new Audio('audio/teleport/uncloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0D.png"; ship1cloak = 0;} //down
-            if (38 in keysDown) {if (ship1cloak == 1){new Audio('audio/teleport/uncloak.ogg').play();} ship1.src="images/Starship/0/STARSHIP0U.png"; ship1cloak = 0;} //up
+            if (39 in keysDown) {if (ship1cloak == 1){cloaksound(1);} ship1.src="images/Starship/0/STARSHIP0R.png"; ship1cloak = 0;} //right
+            if (37 in keysDown) {if (ship1cloak == 1){cloaksound(1);} ship1.src="images/Starship/0/STARSHIP0.png"; ship1cloak = 0;} //left
+            if (40 in keysDown) {if (ship1cloak == 1){cloaksound(1);} ship1.src="images/Starship/0/STARSHIP0D.png"; ship1cloak = 0;} //down
+            if (38 in keysDown) {if (ship1cloak == 1){cloaksound(1);} ship1.src="images/Starship/0/STARSHIP0U.png"; ship1cloak = 0;} //up
 
         }
 */
@@ -449,12 +462,15 @@ function weapcreate(xsp,ysp,plr) {
         playerUpdate();
      if(weaponstat == true) {weaponUpdate();}
           if (gameon == true) {requestAnimationFrame(main);}
-    if (ship2cloak >= 1) {ship2cloak = ship2cloak - 1; if (ship2cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship2.src="images/Starship/3/STARSHIP3.png";}}
-     if (ship1cloak >= 1) {ship1cloak = ship1cloak - 1; if (ship1cloak == 1){new Audio('audio/teleport/uncloak.ogg').play(); ship1.src="images/Starship/0/STARSHIP0.png";}}
+    if (ship2cloak >= 1) {ship2cloak = ship2cloak - 1; if (ship2cloak == 1){cloaksound(1); ship2.src="images/Starship/3/STARSHIP3.png";}}
+     if (ship1cloak >= 1) {ship1cloak = ship1cloak - 1; if (ship1cloak == 1){cloaksound(1); ship1.src="images/Starship/0/STARSHIP0.png";}}
     }  
     main();
     $("#playb").click(function(){playPause()});
     
 } //close window.onload            
+
+
+            
 
 
