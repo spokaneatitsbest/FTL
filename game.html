@@ -1,0 +1,93 @@
+<!-- StarCatcher Game for David's Soft Dev class 2142-->
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="icon" href="images/star.png">
+    <title>FTL</title>
+<!--    our link to the javascript file that will control the game actions -->
+    <script type="text/javascript" src="scScripts.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--    out styles will be internal until we need to move them to an external file -->
+    <style type="text/css">
+        html, body {margin: 5px; background-color: black; color: white;}
+        canvas {display: block;}
+        #game {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1500px;
+            height: 700px;
+            align: center;
+            background-color: black;
+            border-radius: 10px;
+        }
+        .centerText {text-align: center;}
+
+    </style>
+</head>
+<body bgcolor="grey">
+   <!-- <h2 class="centerText">01000111 01000001 01001101 01000101 00100000 01001111 01001110 00100001</h2> -->
+
+    <div id="game">
+        <canvas id="myCanvas"></canvas> <!--MINE! NOT YOURS!-->
+    </div>
+
+    <table style="width:80%" align="center">
+  <tr>
+  <div id="p1hud">
+    <th><div align="left" position="absolute">
+    Player 1
+    <br>
+    <div id="p1fuelimg" style="position: absolute;">
+    <img src='images/UI/top_fuel_on.png'></div>
+    <div id="p1fueltxt" style="position: absolute; margin-top: 12px; margin-left: 45px;">
+    <span id="f2"></span>
+    </div>
+    </th>
+
+    
+
+
+    <th>
+        <div id="p1ammo" style="position: absolute;" align="right" style="position: absolute; margin-top: 12px; margin-right: 80px;">
+        <img src='images/UI/top_missiles_on.png' align="right"></div>
+        
+        <div style="position: absolute; margin-top: 12px; margin-left: 35px;">
+        <span id="2AMMO"> </span>
+        </div>
+    </div>
+    </th>
+        <!--__________________________________________________________________________-->
+    <th>
+   <button onclick="playPause()" id="playb">Press to Pause</button>
+   <button onclick="alert('SYSTEM ERROR: Audio Cannot Be Muted')">Mute Audio</button>
+    </th>
+    <!--_________________________________________________________________________________ -->
+    <th><div id="p2hud"><div align="right" position="absolute">
+    Player 2
+    <br>
+         
+        <div id="p2ammo" style="position: absolute;" align="right" style="position: absolute; margin-top: 12px; margin-right: 80px;">
+        <img src='images/UI/top_missiles_on.png' align="right"></div>
+        </div>
+       <div style="position: absolute; margin-top: 12px; margin-left: 35px;">
+        <span id="1AMMO"> </span>
+        </div>
+    </th>  
+    <th><div id="p2fuelimg" style="position: absolute;" align="right">
+        <img src='images/UI/top_fuel_on.png' align="right"></div>
+        <div id="p2fueltxt" style="position: absolute; margin-top: 12px; margin-left: 45px;">
+        <span id="f1"></span>
+        </div>
+    </div>
+    </div>
+
+    </th>
+
+</tr>
+</table>
+
+
+</body>
+</html>
+
+<!-- All Spaceship Images from Subset Games -->

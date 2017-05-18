@@ -1,0 +1,1 @@
+all assets borrowed from FTL: Faster Than Light are property of Subset Games. 
