@@ -5,25 +5,39 @@
 </head>
 <style>
 html { 
-  background: url(images/Menu/main_base2.png) no-repeat center center fixed; 
+/*  background: url(images/Menu/main_base2.png) no-repeat center center fixed; */
+background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   color: white;
+  height: 100%;
 }
-
+body {height:100%;}
+        #game {
+            margin-left: auto;
+            margin-right: auto;
+            width: 1500px;
+            height: 300px;
+            align: center;
+            background-color: #00000000;
+            border-radius: 10px;
+            font-size: 50px;
+        }
 
 img:hover {
     background-image: url('images/Menu/start_select2.png');
 }
+div.wrap {height:100%; overflow:hidden;}
+body, html {height:100%;}
 </style> 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script type="text/javascript" src="scEndScripts.js"></script>
-
+        <script type="text/javascript" src="scEndScripts2.js"></script>
 <body >
-
+<div class="wrap">
 <table align="center">
 <tr>
 <th>
@@ -37,6 +51,9 @@ Player 2 Fuel: <span id="fuelp2">...</span>
 </th>
 </tr>
 </table>
- 
+     <div id="game">
+        <canvas id="myCanvas"></canvas> <!--MINE! NOT YOURS!-->
+    </div>
+    </div>
 </body>
 </html>
