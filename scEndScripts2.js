@@ -85,7 +85,8 @@ var Federation = {
 
 console.log(hashScoreVal);
                // our stars are created using a single array with a class of information
-
+    var background = new Image();
+        background.src="images/low_sun.png"
     var ship1 = new Image();
     ship1.src="images/Starship/0/STARSHIP0R.png"
     var ship1cloak = 0;
@@ -143,6 +144,7 @@ if (hashScoreVal[0] == 0) {
     //  then calls itself out again
     function main(){
         ctx.clearRect(0,0,w,h);
+        ctx.drawImage(background,0,0,w,h);
         starsUpdate();
         FederationUpdate();
                 if (FederationCount == 0) {
