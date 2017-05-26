@@ -65,7 +65,7 @@ var Federation = {
         obj._height=50;
         obj._img = new Image();
         rand = Math.floor((Math.random() * 6) + 1);
-        obj._img.src='images/STARSHIP/3/BREAK/Federation ('+rand+').png';
+        obj._img.src='images/STARSHIP/3/BREAK/Federation('+rand+').png';
         console.log(rand);
         return obj;
     },
